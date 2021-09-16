@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.backend.backend.grpc.proto;
+
+message PredictionRequest {
+    string modelName = 1;
+    string repositoryName = 2;
+    string input = 3;
+    string objectName = 4;
+    string id = 5;
+    repeated string dependencies = 6;
+}
+
+message PredictionResponse {
+    string prediction = 1;
+}
+
+service PredictService {
+    rpc predict(PredictionRequest) returns (PredictionResponse);
+}
